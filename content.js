@@ -57,13 +57,14 @@ function getList(dateJson) {
     list[i] = list[i].DDISH_NM.split("<br/>"); // ex) "백미밥<br/>김치" --> ["백미밥", "김치"]
   }
 
-  //날짜와 급식 정보 반환
+  //급식표 그리기
   drawList({
     dateJson,
     list,
   });
 }
 
+//html에 급식표 그리기 <-- 자유롭게 수정
 function drawList({ dateJson, list }) {
   const mealHtmlList = document.querySelectorAll(
     ".container>div"
@@ -83,6 +84,7 @@ function drawList({ dateJson, list }) {
 
 //초기화 함수
 (function init() {
+	//사용자의 요청을 받기
   document
     .querySelector("form")
     .addEventListener("submit", (e) => {
@@ -90,7 +92,7 @@ function drawList({ dateJson, list }) {
       e.preventDefault(); //새로고침 안되게
 
       const toFindDate = {
-        //가져오기
+        //값들 가져오기
         year: parseInt(e.target.year.value),
         month: parseInt(e.target.month.value),
         date: parseInt(e.target.date.value),
